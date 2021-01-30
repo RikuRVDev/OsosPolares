@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject _externalSprite;
     public GameObject _floorSprite;
     public GameObject _playerSprite;
+    private GameObject _player;
 
     void Start() {
         GenerateAll();
@@ -65,7 +66,11 @@ public class MapGenerator : MonoBehaviour
 
     private void SpawnPlayer() {
         if (_playerSprite != null) {
-            Instantiate(_playerSprite, new Vector3(_playerSpawnX, _playerSpawnY, 0.0f), Quaternion.identity);
+            _player = Instantiate(_playerSprite, new Vector3(_playerSpawnX,_playerSpawnY,0.0f), Quaternion.identity);
+            Camera cam = Camera.main;
+            cam.transform.SetParent(_player.transform);
+            Camera2DFollow scriptFollow = cam.GetComponent<Camera2DFollow>();
+            scriptFollow.target = _player.transform;
         }
     }
 }
