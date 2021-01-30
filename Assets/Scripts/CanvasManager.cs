@@ -9,15 +9,19 @@ public class CanvasManager : MonoBehaviour
     public Text timeText;
     private GameManager gameManager;
     public Sprite _CatIcon;
+    public Sprite[] _CatsIcons;
     private Canvas canvas;
     private Camera cam;
     private RectTransform icon;
+    private List<Image> _CatsWithoutRecolect = new List<Image>(); 
+    private List<Npc> _CatsWithColor;
     // Start is called before the first frame update
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         canvas = FindObjectOfType<Canvas>();
         cam = Camera.main;
+        _CatsWithColor = gameManager.npcsColorList;
         generateNcpsIcons(); 
         
     }
@@ -28,6 +32,7 @@ public class CanvasManager : MonoBehaviour
             GameObject obj = new GameObject("npc", typeof(RectTransform));
             obj.AddComponent<Image>();
             Image img = obj.GetComponent<Image>();
+            _CatsWithoutRecolect.Add(img);
             img.sprite = _CatIcon;
             obj.transform.SetParent(transform);
             //Nuevo

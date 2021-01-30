@@ -261,13 +261,41 @@ MonoBehaviour:
   _rows: 30
   _externalSprite: {fileID: 1557991129822875251, guid: 5aab8bfb0a2f6a647bf30bcc6f92292f,
     type: 3}
-  _floorSprite: {fileID: 8362594889997259616, guid: c2fc9bb9a96862f4b8e046b7c3ef3469,
-    type: 3}
+  _floorSprites:
+  - {fileID: 3010066073084097860, guid: 8c90d59e102c0c5438b72175e766e0d8, type: 3}
+  - {fileID: 4768851619160638000, guid: b35b65d79e14f414ab09846d328c23e0, type: 3}
+  - {fileID: 555725995925417934, guid: 546d55d19532d464e9fb470bdff039a2, type: 3}
+  - {fileID: 950887236220722983, guid: 130da83bbec165349b0c228b9a875a9e, type: 3}
+  - {fileID: 2235292404333590624, guid: 459c52fa1e8aaab4c84f174743af675e, type: 3}
+  - {fileID: 5151877439005016913, guid: 22aac4394c7413945865a6e34cdfd276, type: 3}
+  - {fileID: 4921593744838823963, guid: e1bbf33bd2c45014497cc4fbd53044a5, type: 3}
+  - {fileID: 8830480151805959480, guid: 0c5b30367b474fa42a2abfd9011f2e2a, type: 3}
+  - {fileID: 8664126871670580083, guid: 038bbaceaa1d7d94f8dcf79f7aba05fc, type: 3}
   _playerSprite: {fileID: 7446695287856401909, guid: 9346a954204ddd94980f21e970407704,
     type: 3}
   _npcSprite: {fileID: 1646640553679027731, guid: 07f0650805eb5dc47819bcfb98a1bf87,
     type: 3}
   npcs: 4
+  _nakedTree:
+  - {fileID: 8586025953952530101, guid: 51b469c62316404488256f8364daed4e, type: 3}
+  - {fileID: 2586476705623459551, guid: 21d7760c75491e04295f86c3523440b9, type: 3}
+  _bigObstacleCount: 2
+  _obstacleSprites:
+  - {fileID: 4360482338010084626, guid: a59c0be25d27db942984d9e06ca4013f, type: 3}
+  - {fileID: 7822575292366002250, guid: 1fa0d6c888e805c4894d632b8f715eb4, type: 3}
+  - {fileID: 2705476277154170418, guid: 5b868aa7be0c5ab409ca459fb9a72a5f, type: 3}
+  - {fileID: 5804653281869946170, guid: e6c6191622c7611498c17e75c8e23abf, type: 3}
+  - {fileID: 4878458954502127561, guid: d0fce8b76b5486e43ab49d2d97383eaf, type: 3}
+  - {fileID: 3956376165264131517, guid: bd68950b2b69c074f8c5f7471513f664, type: 3}
+  - {fileID: 2673808359266293198, guid: 02194167e17afe246a9439242ff4871d, type: 3}
+  - {fileID: 1108070774039711696, guid: 6bf8d3286ebaf8747bd5f46cd20f522d, type: 3}
+  - {fileID: 3862407135998769792, guid: 7beae9f7457a0f2478b61e66a1d2724b, type: 3}
+  - {fileID: 5186324658914091016, guid: 4de14bc6a91290440bc62b446748a36d, type: 3}
+  - {fileID: 5836421351800664154, guid: 72b857ff2bba7f74abc9b7dd30429b88, type: 3}
+  - {fileID: 3408390415653913204, guid: ded7e9161cc1e0a49af72e3e153bc27c, type: 3}
+  - {fileID: 5553998669661653330, guid: a7ea8842121d6ca48939f48bc7768e7f, type: 3}
+  - {fileID: 6277926933941834485, guid: 5fa12a0263287d04fa41f2fbeb1f3b54, type: 3}
+  obstacles: 30
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +573,11 @@ MonoBehaviour:
   timeText: {fileID: 449389984}
   _CatIcon: {fileID: 2189763017799392493, guid: f7e50ff2e5fa4bf4cb23565cb743e701,
     type: 3}
+  _CatsIcons:
+  - {fileID: -5490657598776806782, guid: f7e50ff2e5fa4bf4cb23565cb743e701, type: 3}
+  - {fileID: 4845640187488836599, guid: f7e50ff2e5fa4bf4cb23565cb743e701, type: 3}
+  - {fileID: -6201904241791040270, guid: f7e50ff2e5fa4bf4cb23565cb743e701, type: 3}
+  - {fileID: -2358438015746391248, guid: f7e50ff2e5fa4bf4cb23565cb743e701, type: 3}
 --- !u!1 &1597077211
 GameObject:
   m_ObjectHideFlags: 0

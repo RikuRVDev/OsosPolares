@@ -1,11 +1,24 @@
 using UnityEngine;
 
-public class Npc : MonoBehaviour {
 
-    private void Start() {
-        
-    }
-    private void Update() {
+public class Npc : MonoBehaviour {
+    
+
+
+    private int id;
+    public string color;
+  
+    public Npc(int id) {
+        this.id = id;
+        if(id % 4 == 0){
+            this.color = "Green";
+        }else if(id % 4 == 0){
+            this.color = "Blue";
+        }else if(id % 4 == 0){
+            this.color = "Pink";
+        }else{
+            this.color = "Red";
+        }
         
     }
     

@@ -40,6 +40,9 @@ public class MapGenerator : MonoBehaviour
     public GameObject[] _obstacleSprites;
     public int obstacles = 30;
 
+    //Npc Array
+    public List<Npc> npcsList = new List<Npc>();
+
     void Start() {
         BuildBigObstacles();
         GenerateAll();
@@ -92,6 +95,7 @@ public class MapGenerator : MonoBehaviour
         {
             Tile npcPosition = GetRandomTile();
             _npcTiles.Add(new Tile(npcPosition.x,npcPosition.y,Constants.TILE_TYPE_NPC));
+            npcsList.Add(new Npc(i+1));
             Instantiate(_npcSprite,new Vector3(npcPosition.x,npcPosition.y,0.0f),Quaternion.identity);
         }
     }
