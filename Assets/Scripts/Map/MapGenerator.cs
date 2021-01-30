@@ -68,9 +68,10 @@ public class MapGenerator : MonoBehaviour
     }
 
     private void GenerateNpcs() {
+        GameObject npc;
         for(int i = 0;i <= npcs;i++)
         {
-            Instantiate(_npcSprite,new Vector3(Random.Range(0,_rows),Random.Range(0,_columns),0.0f),Quaternion.identity);
+           npc = Instantiate(_npcSprite,new Vector3(Random.Range(1,_rows-1),Random.Range(1,_columns-1),0.0f),Quaternion.identity);
         }
     }
 
