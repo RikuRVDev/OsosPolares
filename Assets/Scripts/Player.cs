@@ -6,9 +6,8 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private GameManager gameManager;
 
-    // Player movement
-    private float _horizontalPos = 0.0f;
-    private float _verticalPos = 0.0f;
+    private float horizontalPos = 0.0f;
+    private float verticalPos = 0.0f;
 
     void Start()
     {
@@ -16,22 +15,21 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _horizontalPos = Input.GetAxis("Horizontal");
-        _verticalPos = Input.GetAxis("Vertical");
+        horizontalPos = Input.GetAxis("Horizontal");
+        verticalPos = Input.GetAxis("Vertical");
     }
 
     private void FixedUpdate() {
-        Vector3 tempVect = new Vector3(_horizontalPos, _verticalPos, 0);
+        Vector3 tempVect = new Vector3(horizontalPos, verticalPos, 0);
         tempVect = tempVect * speed * Time.deltaTime;
 
         transform.Translate(tempVect, Space.World);
 
-        if (_horizontalPos > 0) {
+        if (horizontalPos > 0) {
             sr.flipX = true;
-        } else if (_horizontalPos < 0) {
+        } else if (horizontalPos < 0) {
             sr.flipX = false;
         }
     }
