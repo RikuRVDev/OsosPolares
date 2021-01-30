@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 100;
-    public Transform obj;
+    public float speed = 3;
+    private SpriteRenderer sr;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,23 @@ public class Player : MonoBehaviour
         Vector3 tempVect = new Vector3(horizontalPos, verticalPos, 0);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
 
-        obj.transform.position += tempVect;
+        transform.position += tempVect;
+
+        if(horizontalPos > 0) {
+            sr.flipX = true;
+        }
+        if (horizontalPos < 0) {
+            sr.flipX = false;
+        }
+        
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+  
+        if(other.gameObject.CompareTag("npc"))
+        {
+            gameManager.reduceNpcsRemain();
+            Destroy(other.gameObject, .0f);
+        }
     }
 }    
