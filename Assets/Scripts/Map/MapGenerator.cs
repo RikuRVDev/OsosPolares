@@ -20,6 +20,7 @@ public class MapGenerator : MonoBehaviour
     private List<Tile> _mapTiles = new List<Tile>();
     private List<Tile> _campTiles = new List<Tile>();
     private List<Tile> _npcTiles = new List<Tile>();
+    private List<Tile> _obstacleTiles = new List<Tile>();
 
     // Map tiles
     public GameObject _externalSprite;
@@ -35,6 +36,10 @@ public class MapGenerator : MonoBehaviour
     public int _bigObstacleCount = 2;
     private int _maxRetries = 5;
 
+    // Obstacle tiles
+    public GameObject[] _obstacleSprites;
+    public int obstacles = 30;
+
     void Start() {
         BuildBigObstacles();
         GenerateAll();
@@ -45,7 +50,7 @@ public class MapGenerator : MonoBehaviour
         GenerateNpcs();
         // SetNpcPaths();
         GenerateBigObstacles();
-        // GenerateSmallObstacles()
+        GenerateSmallObstacles();
         SpawnPlayer();
     }
 
@@ -129,6 +134,20 @@ public class MapGenerator : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    /**
+     * Genetate obstacles to block the player
+     * Get available positions from Map Tiles and set them onto the map
+     **/
+    private void GenerateSmallObstacles() {
+        for (int i = 0; i < obstacles; i++)
+        {
+            GameObject selectedTile = _obstacleSprites[Random.Range(0,_obstacleSprites.Length)];
+            Tile obstaclePosition = GetRandomTile();
+            _obstacleTiles.Add(new Tile(obstaclePosition.x,obstaclePosition.y,Constants.TILE_TYPE_OBSTACLE));
+            Instantiate(selectedTile,new Vector3(obstaclePosition.x,obstaclePosition.y,0.0f),Quaternion.identity);
         }
     }
 

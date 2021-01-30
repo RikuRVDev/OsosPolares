@@ -183,11 +183,27 @@ MonoBehaviour:
     type: 3}
   _npcSprite: {fileID: 1646640553679027731, guid: 07f0650805eb5dc47819bcfb98a1bf87,
     type: 3}
-  npcs: 4
+  npcs: 10
   _nakedTree:
   - {fileID: 8586025953952530101, guid: 51b469c62316404488256f8364daed4e, type: 3}
   - {fileID: 2586476705623459551, guid: 21d7760c75491e04295f86c3523440b9, type: 3}
-  _bigObstacleCount: 2
+  _bigObstacleCount: 4
+  _obstacleSprites:
+  - {fileID: 4360482338010084626, guid: a59c0be25d27db942984d9e06ca4013f, type: 3}
+  - {fileID: 7822575292366002250, guid: 1fa0d6c888e805c4894d632b8f715eb4, type: 3}
+  - {fileID: 2705476277154170418, guid: 5b868aa7be0c5ab409ca459fb9a72a5f, type: 3}
+  - {fileID: 5804653281869946170, guid: e6c6191622c7611498c17e75c8e23abf, type: 3}
+  - {fileID: 4878458954502127561, guid: d0fce8b76b5486e43ab49d2d97383eaf, type: 3}
+  - {fileID: 3956376165264131517, guid: bd68950b2b69c074f8c5f7471513f664, type: 3}
+  - {fileID: 2673808359266293198, guid: 02194167e17afe246a9439242ff4871d, type: 3}
+  - {fileID: 1108070774039711696, guid: 6bf8d3286ebaf8747bd5f46cd20f522d, type: 3}
+  - {fileID: 3862407135998769792, guid: 7beae9f7457a0f2478b61e66a1d2724b, type: 3}
+  - {fileID: 5186324658914091016, guid: 4de14bc6a91290440bc62b446748a36d, type: 3}
+  - {fileID: 5836421351800664154, guid: 72b857ff2bba7f74abc9b7dd30429b88, type: 3}
+  - {fileID: 3408390415653913204, guid: ded7e9161cc1e0a49af72e3e153bc27c, type: 3}
+  - {fileID: 5553998669661653330, guid: a7ea8842121d6ca48939f48bc7768e7f, type: 3}
+  - {fileID: 6277926933941834485, guid: 5fa12a0263287d04fa41f2fbeb1f3b54, type: 3}
+  obstacles: 100
 --- !u!114 &375456969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe63b04fde90d374dae073ad3cf279bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcRemain: 4
 --- !u!1 &906246512
 GameObject:
   m_ObjectHideFlags: 0
