@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed = 3;
     private SpriteRenderer sr;
     private GameManager gameManager;
+    private float horizontalPos;
+    private float verticalPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +19,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalPos = Input.GetAxis("Horizontal");
-        float verticalPos = Input.GetAxis("Vertical");
-
+        horizontalPos = Input.GetAxis("Horizontal");
+        verticalPos = Input.GetAxis("Vertical");        
+    }
+    void FixedUpdate() {
         Vector3 tempVect = new Vector3(horizontalPos, verticalPos, 0);
         tempVect = tempVect.normalized * speed * Time.deltaTime;
 
@@ -31,7 +34,6 @@ public class Player : MonoBehaviour
         if (horizontalPos < 0) {
             sr.flipX = false;
         }
-        
     }
     void OnTriggerEnter2D(Collider2D other)
     {
