@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -31,9 +32,9 @@ public class MapGenerator : MonoBehaviour
     public int npcs = 4;
 
     // Big obstacle tiles
-    private List<GameObject[]> _bigObstacles = new List<GameObject[]>();
+    private List<GameObject[]> _bigObstaclesList = new List<GameObject[]>();
     public GameObject[] _nakedTree;
-    public int _bigObstacleCount = 2;
+    public int _bigObstacles = 2;
     private int _maxRetries = 5;
 
     // Obstacle tiles
@@ -48,7 +49,7 @@ public class MapGenerator : MonoBehaviour
     public void GenerateAll() {
         GenerateMap();
         GenerateNpcs();
-        // SetNpcPaths();
+        SetNpcPaths();
         GenerateBigObstacles();
         GenerateSmallObstacles();
         SpawnPlayer();
@@ -97,10 +98,29 @@ public class MapGenerator : MonoBehaviour
     }
 
     /**
+     * Build paths for the player to get to all the NPCs
+     **/
+    private void SetNpcPaths() {
+        foreach(Tile t in _npcTiles)
+        {
+            List<int> directions = RandomPathfinding.GenerateRandomPath(_playerSpawnX, _playerSpawnY, t.x, t.y, 0.3);
+            string str = "";
+            for(int i = 0; i < directions.Count; i++)
+            {
+                if(i == 0) str += "[";
+                str += directions[i].ToString();
+                if(i < directions.Count - 1) str += ", ";
+                if(i == directions.Count - 1) str += "]";
+            }
+            Debug.Log(str);
+        }
+    }
+
+    /**
      * Build all big obstacles to generate a list of sprite arrays
      **/
     private void BuildBigObstacles() {
-        _bigObstacles.Add(_nakedTree);
+        _bigObstaclesList.Add(_nakedTree);
 
         /*
         Debug.Log(_bigObstacles.Count);
@@ -119,9 +139,9 @@ public class MapGenerator : MonoBehaviour
      * Get available positions from Map Tiles and set them onto the map
      **/
     private void GenerateBigObstacles() {
-        for (int i = 0; i < _bigObstacleCount; i++)
+        for (int i = 0; i < _bigObstacles; i++)
         {
-            GameObject[] bigObstacle = _bigObstacles[Random.Range(0,_bigObstacles.Count)];
+            GameObject[] bigObstacle = _bigObstaclesList[Random.Range(0,_bigObstaclesList.Count)];
             List<Tile> obstacleTiles = GetRandomTileGroup(bigObstacle.Length);
 
             // Si hem trobat una llista de obstacles que ens val, el pintem
