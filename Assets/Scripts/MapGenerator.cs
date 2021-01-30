@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -10,10 +11,13 @@ public class MapGenerator : MonoBehaviour
     public GameObject _externalSprite;
     public GameObject _floorSprite;
     public GameObject _playerSprite;
+    public GameObject _npcSprite;
     private GameObject player;
+    public int npcs = 4;
 
     void Start() {
         GenerateMap();
+        GenerateNpcs();
         SpawnPlayer();
     }
 
@@ -28,6 +32,12 @@ public class MapGenerator : MonoBehaviour
                 }
                 Instantiate(selectedTile,new Vector3(i,j,0.0f),Quaternion.identity);
             }
+        }
+    }
+    private void GenerateNpcs() {
+        for (int i = 0; i <= npcs; i++)
+        {
+            Instantiate(_npcSprite, new Vector3(Random.Range(0,_rows), Random.Range(0,_columns), 0.0f), Quaternion.identity);
         }
     }
 
