@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 7f3be9dab73ca934e9fcc12d5d4dab0e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1804650955226622517
+    second: blue_cat_idle_0
+  - first:
+      213: 8953594024595948299
+    second: blue_cat_idle_1
+  - first:
+      213: -3987774225876013305
+    second: blue_cat_idle_2
+  - first:
+      213: 7275105126738401964
+    second: blue_cat_idle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,11 +97,95 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: blue_cat_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a2ad97b786b0910800000000000000
+      internalID: 1804650955226622517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_cat_idle_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b030a13c35e814c70800000000000000
+      internalID: 8953594024595948299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_cat_idle_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fa33e387498a8c0800000000000000
+      internalID: -3987774225876013305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_cat_idle_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa9dde419d56f460800000000000000
+      internalID: 7275105126738401964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cc5540f53adea2e498fe8cb8b06975af
     internalID: 0
     vertices: []
     indices: 
