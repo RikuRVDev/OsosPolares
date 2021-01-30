@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+<<<<<<< HEAD
     public int npcRemain;
     public float timeRemaining = 10;
+=======
+    private int npcRemain;
+>>>>>>> a793b0bb881c25700c50611e39f7a70a5ffe6cb1
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
