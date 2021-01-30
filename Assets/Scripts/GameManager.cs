@@ -5,15 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int npcRemain;
+    private MapGenerator mg;
 
     private void Awake() {
-        MapGenerator mg = GetComponent<MapGenerator>();
+        mg = GetComponent<MapGenerator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        npcRemain = 2;
+        npcRemain = mg.npcs;
     }
 
     // Update is called once per frame
