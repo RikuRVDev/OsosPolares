@@ -169,13 +169,25 @@ MonoBehaviour:
   _rows: 30
   _externalSprite: {fileID: 1557991129822875251, guid: 5aab8bfb0a2f6a647bf30bcc6f92292f,
     type: 3}
-  _floorSprite: {fileID: 8362594889997259616, guid: c2fc9bb9a96862f4b8e046b7c3ef3469,
-    type: 3}
+  _floorSprites:
+  - {fileID: 8664126871670580083, guid: 038bbaceaa1d7d94f8dcf79f7aba05fc, type: 3}
+  - {fileID: 8830480151805959480, guid: 0c5b30367b474fa42a2abfd9011f2e2a, type: 3}
+  - {fileID: 4921593744838823963, guid: e1bbf33bd2c45014497cc4fbd53044a5, type: 3}
+  - {fileID: 5151877439005016913, guid: 22aac4394c7413945865a6e34cdfd276, type: 3}
+  - {fileID: 2235292404333590624, guid: 459c52fa1e8aaab4c84f174743af675e, type: 3}
+  - {fileID: 950887236220722983, guid: 130da83bbec165349b0c228b9a875a9e, type: 3}
+  - {fileID: 555725995925417934, guid: 546d55d19532d464e9fb470bdff039a2, type: 3}
+  - {fileID: 4768851619160638000, guid: b35b65d79e14f414ab09846d328c23e0, type: 3}
+  - {fileID: 3010066073084097860, guid: 8c90d59e102c0c5438b72175e766e0d8, type: 3}
   _playerSprite: {fileID: 5732456683046673149, guid: 79e872b037ef8cd4abcf83402110cd99,
     type: 3}
   _npcSprite: {fileID: 1646640553679027731, guid: 07f0650805eb5dc47819bcfb98a1bf87,
     type: 3}
   npcs: 4
+  _nakedTree:
+  - {fileID: 8586025953952530101, guid: 51b469c62316404488256f8364daed4e, type: 3}
+  - {fileID: 2586476705623459551, guid: 21d7760c75491e04295f86c3523440b9, type: 3}
+  _bigObstacleCount: 2
 --- !u!114 &375456969
 MonoBehaviour:
   m_ObjectHideFlags: 0

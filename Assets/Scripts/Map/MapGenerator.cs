@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -17,22 +18,34 @@ public class MapGenerator : MonoBehaviour
 
     // Map tile types
     private List<Tile> _mapTiles = new List<Tile>();
+    private List<Tile> _campTiles = new List<Tile>();
+    private List<Tile> _npcTiles = new List<Tile>();
 
     // Map tiles
     public GameObject _externalSprite;
-    public GameObject _floorSprite;
+    public GameObject[] _floorSprites;
     public GameObject _playerSprite;
     public GameObject _npcSprite;
     private GameObject _player;
     public int npcs = 4;
 
+    // Big obstacle tiles
+    private List<GameObject[]> _bigObstacles = new List<GameObject[]>();
+    public GameObject[] _nakedTree;
+    public int _bigObstacleCount = 2;
+    private int _maxRetries = 5;
+
     void Start() {
+        BuildBigObstacles();
         GenerateAll();
     }
 
     public void GenerateAll() {
         GenerateMap();
         GenerateNpcs();
+        // SetNpcPaths();
+        GenerateBigObstacles();
+        // GenerateSmallObstacles()
         SpawnPlayer();
     }
 
@@ -53,27 +66,75 @@ public class MapGenerator : MonoBehaviour
                 if(i == 0 || i == _columns - 1 || j == 0 || j == _rows - 1) {
                     selectedTile = _externalSprite;
                 } else {
-                    selectedTile = _floorSprite;
-                    string tileType = "";
+                    selectedTile = _floorSprites[Random.Range(0, _floorSprites.Length)];
                     if(i <= _campSize && j <= _campSize) {
-                        tileType = Constants.TILE_TYPE_CAMP;
+                        _campTiles.Add(new Tile(i, j, Constants.TILE_TYPE_CAMP));
                     } else {
-                        tileType = Constants.TILE_TYPE_GROUND;
+                        _mapTiles.Add(new Tile(i, j, Constants.TILE_TYPE_GROUND));
                     }
-                    _mapTiles.Add(new Tile(i, j, tileType));
                 }
                 Instantiate(selectedTile,new Vector3(i, j, 0.0f),Quaternion.identity);
             }
         }
     }
 
+    /**
+     * Generate npcs depending on npc count
+     * Get available positions from Map Tiles
+     **/
     private void GenerateNpcs() {
-        for(int i = 0;i <= npcs;i++)
+        for(int i = 0;i < npcs;i++)
         {
-            Instantiate(_npcSprite,new Vector3(Random.Range(0,_rows),Random.Range(0,_columns),0.0f),Quaternion.identity);
+            Tile npcPosition = GetRandomTile();
+            _npcTiles.Add(new Tile(npcPosition.x,npcPosition.y,Constants.TILE_TYPE_NPC));
+            Instantiate(_npcSprite,new Vector3(npcPosition.x,npcPosition.y,0.0f),Quaternion.identity);
         }
     }
 
+    /**
+     * Build all big obstacles to generate a list of sprite arrays
+     **/
+    private void BuildBigObstacles() {
+        _bigObstacles.Add(_nakedTree);
+
+        /*
+        Debug.Log(_bigObstacles.Count);
+        foreach (GameObject[] bo in _bigObstacles)
+        {
+            foreach (GameObject go in bo)
+            {
+                Debug.Log(go.name);
+            }
+        }
+        */
+    }
+
+    /**
+     * Generate big obstacles to block the player
+     * Get available positions from Map Tiles and set them onto the map
+     **/
+    private void GenerateBigObstacles() {
+        for (int i = 0; i < _bigObstacleCount; i++)
+        {
+            GameObject[] bigObstacle = _bigObstacles[Random.Range(0,_bigObstacles.Count)];
+            List<Tile> obstacleTiles = GetRandomTileGroup(bigObstacle.Length);
+
+            // Si hem trobat una llista de obstacles que ens val, el pintem
+            if (obstacleTiles.Count > 0)
+            {
+                for (int j = 0; j < obstacleTiles.Count; j++)
+                {
+                    Tile t = obstacleTiles.ElementAt(j);
+                    Instantiate(bigObstacle[j],new Vector3(t.x,t.y,0.0f),Quaternion.identity);
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Spawn player at start position
+     **/
     private void SpawnPlayer() {
         if (_playerSprite != null) {
             _player = Instantiate(_playerSprite, new Vector3(_playerSpawnX,_playerSpawnY,0.0f), Quaternion.identity);
@@ -82,5 +143,60 @@ public class MapGenerator : MonoBehaviour
             Camera2DFollow scriptFollow = cam.GetComponent<Camera2DFollow>();
             scriptFollow.target = _player.transform;
         }
+    }
+
+    private Tile GetRandomTile() {
+        int randomIndex = Random.Range(0,_mapTiles.Count);
+        Tile npcPosition = _mapTiles[randomIndex];
+        _mapTiles.RemoveAt(randomIndex);
+        return npcPosition;
+    }
+
+    private List<Tile> GetRandomTileGroup(int count) {
+
+        List<Tile> tileGroup = new List<Tile>();
+        bool tryAgain = false;
+        bool found = false;
+        int retries = 0;
+
+        // Provem de trobar un espai 10 cops o fins que el trobem
+        while ((retries < _maxRetries) && !found)
+        {
+            tryAgain = false;
+
+            int randomIndex = Random.Range(0,_mapTiles.Count);
+            Tile randomInitTile = _mapTiles[randomIndex];
+            tileGroup.Add(randomInitTile);
+
+            // Mirem si en el mapa hi ha tants tiles cap amunt com count
+            for(int i = 1;i < count && !tryAgain;i++)
+            {
+                Tile nextTile = _mapTiles.Find(t => randomInitTile.x == t.x && (randomInitTile.y + 1) == t.y);
+                if(nextTile != null)
+                {
+                    tileGroup.Add(nextTile);
+                }
+                else
+                {
+                    tryAgain = true;
+                }
+            }
+
+            if (tileGroup.Count == count)
+            {
+                found = true;
+
+                foreach (Tile t in tileGroup)
+                {
+                    _mapTiles.RemoveAt(_mapTiles.IndexOf(t));
+                }
+            } else
+            {
+                retries++;
+                tileGroup = new List<Tile>();
+            }
+        }
+
+        return tileGroup;
     }
 }

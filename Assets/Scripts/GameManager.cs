@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int npcRemain;
+    private int npcRemain;
     private MapGenerator mg;
 
     private void Awake() {
