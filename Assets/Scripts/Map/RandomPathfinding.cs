@@ -17,8 +17,9 @@ public static class RandomPathfinding
         return newDirection;
     }
 
-    public static List<int> GenerateRandomPath(int startX, int startY, int endX, int endY, double probability) {
+    public static List<Tile> GenerateRandomPath(int startX, int startY, int endX, int endY, double probability) {
         List<int> newPath = new List<int>();
+        List<Tile> newPathTiles = new List<Tile>();
 
         int currentX = startX;
         int currentY = startY;
@@ -28,7 +29,6 @@ public static class RandomPathfinding
         while(!(currentX == endX && currentY == endY)) {
             if (NextDouble() <= probability)
             {
-                // Generate a turn
                 do
                 {
                     if(currentX == endX)
@@ -39,7 +39,7 @@ public static class RandomPathfinding
                     {
                         newDirection = DIRECTION_RIGHT;
                     }
-                    else if(currentX <= 0)
+                    else if(currentX == 1)
                     {
                         newDirection = GetNewDirection(DIRECTION_RIGHT | DIRECTION_DOWN);
                     }
@@ -63,10 +63,11 @@ public static class RandomPathfinding
                         currentY++;
                         break;
                 }
+                newPathTiles.Add(new Tile(currentX,currentY,Constants.TILE_TYPE_PATH));
             }
         }
 
-        return newPath;
+        return newPathTiles;
     }
 
     private static double NextDouble() {

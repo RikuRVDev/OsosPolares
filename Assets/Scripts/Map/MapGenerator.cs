@@ -24,6 +24,7 @@ public class MapGenerator : MonoBehaviour
     private List<Tile> _obstacleTiles = new List<Tile>();
 
     // Map tiles
+    public GameObject _pathSprite;
     public GameObject _externalSprite;
     public GameObject[] _floorSprites;
     public GameObject _playerSprite;
@@ -103,7 +104,9 @@ public class MapGenerator : MonoBehaviour
     private void SetNpcPaths() {
         foreach(Tile t in _npcTiles)
         {
-            List<int> directions = RandomPathfinding.GenerateRandomPath(_playerSpawnX, _playerSpawnY, t.x, t.y, 0.3);
+            // TODO - Level 1 -> From player span
+            // TODO - Level 2 -> From camp edges -> calculate edges before calling GenerateRandomPath()
+            List<Tile> directions = RandomPathfinding.GenerateRandomPath(_playerSpawnX, _playerSpawnY, t.x, t.y, 0.3);
             string str = "";
             for(int i = 0; i < directions.Count; i++)
             {
@@ -111,6 +114,9 @@ public class MapGenerator : MonoBehaviour
                 str += directions[i].ToString();
                 if(i < directions.Count - 1) str += ", ";
                 if(i == directions.Count - 1) str += "]";
+
+                Tile tile = directions[i];
+                Instantiate(_pathSprite,new Vector3(tile.x,tile.y,0.0f),Quaternion.identity);
             }
             Debug.Log(str);
         }
