@@ -17,7 +17,6 @@ public class MapGenerator : MonoBehaviour
 
     // Map tile types
     private List<Tile> _mapTiles = new List<Tile>();
-    private List<Tile> _campTiles = new List<Tile>();
 
     // Map tiles
     public GameObject _externalSprite;
