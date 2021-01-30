@@ -24,8 +24,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate() {
         Vector3 tempVect = new Vector3(horizontalPos, verticalPos, 0);
         tempVect = tempVect * speed * Time.deltaTime;
-
-        transform.Translate(tempVect, Space.World);
+        transform.Translate(tempVect);
 
         if (horizontalPos > 0) {
             sr.flipX = true;
