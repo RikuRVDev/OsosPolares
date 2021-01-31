@@ -63,7 +63,7 @@ public static class RandomPathfinding
                         currentY++;
                         break;
                 }
-                newPathTiles.Add(new Tile(currentX,currentY,Constants.TILE_TYPE_PATH));
+                newPathTiles.Add(new Tile(currentX,currentY,Constants.TILE_TYPE_GROUND));
             }
         }
 

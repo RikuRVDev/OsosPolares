@@ -102,11 +102,11 @@ public class MapGenerator : MonoBehaviour
      * Build paths for the player to get to all the NPCs
      **/
     private void SetNpcPaths() {
+        List<Tile> pathTiles = new List<Tile>();
+
         foreach(Tile t in _npcTiles)
         {
-            // TODO - Level 1 -> From player span
-            // TODO - Level 2 -> From camp edges -> calculate edges before calling GenerateRandomPath()
-            List<Tile> directions = RandomPathfinding.GenerateRandomPath(_playerSpawnX, _playerSpawnY, t.x, t.y, 0.3);
+            List<Tile> directions = RandomPathfinding.GenerateRandomPath(_playerSpawnX,_playerSpawnY, t.x, t.y, 0.3);
             string str = "";
             for(int i = 0; i < directions.Count; i++)
             {
@@ -116,9 +116,13 @@ public class MapGenerator : MonoBehaviour
                 if(i == directions.Count - 1) str += "]";
 
                 Tile tile = directions[i];
-                Instantiate(_pathSprite,new Vector3(tile.x,tile.y,0.0f),Quaternion.identity);
+                Tile matchTiles = _mapTiles.Find(tt => tt.x == tile.x && tt.y == tile.y);
+                if (matchTiles != null && !ElementIntoArray(pathTiles, matchTiles))
+                {
+                    pathTiles.Add(matchTiles);
+                    _mapTiles.RemoveAt(_mapTiles.IndexOf(matchTiles));
+                }
             }
-            Debug.Log(str);
         }
     }
 
@@ -150,7 +154,6 @@ public class MapGenerator : MonoBehaviour
             GameObject[] bigObstacle = _bigObstaclesList[Random.Range(0,_bigObstaclesList.Count)];
             List<Tile> obstacleTiles = GetRandomTileGroup(bigObstacle.Length);
 
-            // Si hem trobat una llista de obstacles que ens val, el pintem
             if (obstacleTiles.Count > 0)
             {
                 for (int j = 0; j < obstacleTiles.Count; j++)
@@ -197,6 +200,10 @@ public class MapGenerator : MonoBehaviour
         return npcPosition;
     }
 
+    private bool ElementIntoArray(List<Tile> tileArray, Tile tile) {
+        return tileArray.Any( arrayTile => arrayTile.x == tile.x && arrayTile.y == tile.y );
+    }
+
     private List<Tile> GetRandomTileGroup(int count) {
 
         List<Tile> tileGroup = new List<Tile>();
@@ -204,7 +211,7 @@ public class MapGenerator : MonoBehaviour
         bool found = false;
         int retries = 0;
 
-        // Provem de trobar un espai 10 cops o fins que el trobem
+        // Find a spot that fits the sprite, max 10 tries
         while ((retries < _maxRetries) && !found)
         {
             tryAgain = false;
@@ -213,7 +220,7 @@ public class MapGenerator : MonoBehaviour
             Tile randomInitTile = _mapTiles[randomIndex];
             tileGroup.Add(randomInitTile);
 
-            // Mirem si en el mapa hi ha tants tiles cap amunt com count
+            // Check if sprite fits into the tilemap
             for(int i = 1;i < count && !tryAgain;i++)
             {
                 Tile nextTile = _mapTiles.Find(t => randomInitTile.x == t.x && (randomInitTile.y + 1) == t.y);
