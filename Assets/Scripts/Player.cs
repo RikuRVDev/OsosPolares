@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             canvasManager.renderSprite(npc.color);
             
             gameManager.reduceNpcsRemain();
-            Destroy(other.gameObject, .0f);
+            npc.GoToCamp();
         }
     }
 
