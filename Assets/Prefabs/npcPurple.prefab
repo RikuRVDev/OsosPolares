@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8489427831662696077}
   - component: {fileID: 8489427831662696078}
   - component: {fileID: 8489427831662696075}
-  - component: {fileID: 8489427831662696074}
   - component: {fileID: 8012348897134344827}
   - component: {fileID: 7136669914257377911}
+  - component: {fileID: 7816080075297865574}
   m_Layer: 9
   m_Name: npcPurple
   m_TagString: npc
@@ -112,25 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 0.88}
   m_EdgeRadius: 0
---- !u!95 &8489427831662696074
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8489427831662696079}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1cddc48eefee6f04b84ba03c46a35194, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &8012348897134344827
 Rigidbody2D:
   serializedVersion: 4
@@ -166,3 +147,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   color: {fileID: 4845640187488836599, guid: f7e50ff2e5fa4bf4cb23565cb743e701, type: 3}
+--- !u!95 &7816080075297865574
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489427831662696079}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a301eeaf84228244db9dfeaedb0ff712, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

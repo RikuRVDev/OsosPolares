@@ -32,7 +32,7 @@ public class CanvasManager : MonoBehaviour
     private void generateNcpsIcons(){
         for (int i = 0; i < gameManager.npcRemain; i++)
         {
-            GameObject obj = new GameObject("timer", typeof(RectTransform));
+            GameObject obj = new GameObject("npc", typeof(RectTransform));
             obj.AddComponent<Image>();
             Image img = obj.GetComponent<Image>();
             _CatsWithoutRecolect.Add(img);
@@ -53,7 +53,7 @@ public class CanvasManager : MonoBehaviour
 
     }
     private void generateTimmerStages(){
-        GameObject obj = new GameObject("npc", typeof(RectTransform));
+        GameObject obj = new GameObject("timer", typeof(RectTransform));
         obj.AddComponent<Image>();
         Image img = obj.GetComponent<Image>();
         timmerIcon = img;
@@ -63,8 +63,8 @@ public class CanvasManager : MonoBehaviour
         Vector3 screenPos = cam.WorldToScreenPoint(obj.transform.position);
         float h = Screen.height;
         float w = Screen.width;
-        float x = screenPos.x - (w /2);
-        float y = screenPos.y - 25;
+        float x = screenPos.x - 20;
+        float y = screenPos.y - 30;
         float s = canvas.scaleFactor;
         RectTransform trm = obj.GetComponent<RectTransform>();
         trm.localScale = new Vector3(0.5f,0.5f,0);  

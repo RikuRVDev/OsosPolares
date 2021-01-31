@@ -41,6 +41,11 @@ public class MapGenerator : MonoBehaviour
     public GameObject[] _obstacleSprites;
     public int obstacles = 30;
 
+    // Camp
+    public GameObject _houseSprite;
+    private int _houseXPosition = 3;
+    private int _houseYPosition = 3;
+
     void Start() {
         BuildBigObstacles();
         GenerateAll();
@@ -48,6 +53,7 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateAll() {
         GenerateMap();
+        PlaceHouseCamp();
         GenerateNpcs();
         SetNpcPaths();
         GenerateBigObstacles();
@@ -82,6 +88,10 @@ public class MapGenerator : MonoBehaviour
                 Instantiate(selectedTile,new Vector3(i, j, 0.0f),Quaternion.identity);
             }
         }
+    }
+
+    private void PlaceHouseCamp() {
+        Instantiate(_houseSprite,new Vector3(_houseXPosition,_houseYPosition,0.0f),Quaternion.identity);
     }
 
     /**

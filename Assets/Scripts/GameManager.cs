@@ -4,13 +4,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int npcRemain;
-    public float timeRemaining = 10;
+    public float timeRemaining = 20;
     private float timeTriggerChange;
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
     private AudioManager _audioManager;
     public Player _playerComponent;
+
+    // Camp control
+    private Tile[] _campPositions = Constants.CAMP_POSITIONS;
+    private int _campIndex = 0;
 
     private void Awake() {
         mg = GetComponent<MapGenerator>();
@@ -49,6 +53,12 @@ public class GameManager : MonoBehaviour
             timerIsRunning = false;
             _playerComponent.TogglePlayerCanMove();
         }
+    }
+
+    public Tile GetNextCampPosition() {
+        Tile tile = _campPositions[_campIndex];
+        _campIndex++;
+        return tile;
     }
 
     void updateTimer() {
