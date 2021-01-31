@@ -52,8 +52,11 @@ public class AudioManager : MonoBehaviour
         _audioSource.loop = false;
         _audioSource.Stop();
         _audioSource.clip = _victory;
-        _audioSource.loop = true;
         _audioSource.Play();
+    }
+
+    public bool GetIsPlaying() {
+        return _audioSource.isPlaying;
     }
 
 }

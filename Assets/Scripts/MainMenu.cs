@@ -3,9 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame(){
+    public static MainMenu instance = null;
+    private AudioManagerMenu audioManagerMenu;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1 );
+    public void Awake() {
+        audioManagerMenu = GetComponent<AudioManagerMenu>();
+    }
+
+    public void Start() {
+        audioManagerMenu.StartMenuMusic();
+    }
+
+    public void PlayGame() {
+        Debug.Log("play!");
+        audioManagerMenu.StopAllCoroutines();
+        audioManagerMenu.StopMenuMusic();
+        SceneManager.LoadScene("Game");
     }
 
      public void QuitGame(){
@@ -13,5 +26,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
     }
 
-
+    public void GoToCredits() {
+        SceneManager.LoadScene("Creditos");
+    }
 }

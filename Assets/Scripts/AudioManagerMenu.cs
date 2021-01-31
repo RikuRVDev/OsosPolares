@@ -21,6 +21,15 @@ public class AudioManagerMenu : MonoBehaviour
     }
 
     private void Start() {
+        // StartMenuMusic();
+    }
+
+    public void StopMenuMusic() {
+        _audioSource.loop = false;
+        _audioSource.Stop();
+    }
+
+    public void StartMenuMusic() {
         _audioSource.volume = PlayerPrefs.GetFloat(Constants.AUDIO_VOLUME);
         _audioSource.loop = false;
         _audioSource.Play();

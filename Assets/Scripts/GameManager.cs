@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public int npcRemain;
-    public float timeRemaining = 20;
+    public float timeRemaining = 0;
     private float timeTriggerChange;
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
     private AudioManager _audioManager;
     public Player _playerComponent;
+    private MenuController _menuController;
 
     // Camp control
     private Tile[] _campPositions = Constants.CAMP_POSITIONS;
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         mg = GetComponent<MapGenerator>();
         canvasManager = FindObjectOfType<CanvasManager>();
+        _menuController = FindObjectOfType<MenuController>();
     }
 
     // Start is called before the first frame update
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
             _audioManager.PlayVictory();
             timerIsRunning = false;
             _playerComponent.TogglePlayerCanMove();
+            StartCoroutine("WinGame");
         }
     }
 
@@ -75,7 +79,18 @@ public class GameManager : MonoBehaviour
                 timerIsRunning = false;
                 _audioManager.PlayFail();
                 _playerComponent.TogglePlayerCanMove();
+                StartCoroutine("GameOver");
             }
         }
+    }
+
+    private IEnumerator WinGame() {
+        yield return new WaitWhile(() => _audioManager.GetIsPlaying());
+        _menuController.GoToWin();
+    }
+
+    private IEnumerator GameOver() {
+        yield return new WaitWhile(() => _audioManager.GetIsPlaying());
+        _menuController.GoToGameOver();
     }
 }
