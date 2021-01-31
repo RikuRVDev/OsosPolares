@@ -78,7 +78,21 @@ public class MapGenerator : MonoBehaviour
                 if(i == 0 || i == _columns - 1 || j == 0 || j == _rows - 1) {
                     selectedTile = _externalSprite;
                 } else {
-                    selectedTile = _floorSprites[Random.Range(0, _floorSprites.Length)];
+
+                    // Select floot tile
+                    int randomNumber = Random.Range(0,101);
+                    if (randomNumber < 50)
+                    {
+                        selectedTile = _floorSprites[8];
+                    } else if (randomNumber >= 50 && randomNumber < 90)
+                    {
+                        selectedTile = _floorSprites[Random.Range(0,6)];
+                    } else
+                    {
+                        selectedTile = _floorSprites[Random.Range(6,8)];
+                    }
+
+                    // selectedTile = _floorSprites[Random.Range(0, _floorSprites.Length)];
                     if(i <= _campSize && j <= _campSize) {
                         _campTiles.Add(new Tile(i, j, Constants.TILE_TYPE_CAMP));
                     } else {
