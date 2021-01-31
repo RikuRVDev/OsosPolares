@@ -5,7 +5,6 @@ public class AudioManager : MonoBehaviour
 {
 
     private AudioSource _audioSource;
-    private static float _volume = 0.2f;
 
     // Music
     public AudioClip _music;
@@ -27,7 +26,7 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Start() {
-        _audioSource.volume = _volume;
+        _audioSource.volume = PlayerPrefs.GetFloat(Constants.AUDIO_VOLUME);
         _audioSource.clip = _music;
         _audioSource.loop = true;
         _audioSource.Play();

@@ -12,10 +12,16 @@ public class AudioManagerMenu : MonoBehaviour
 
     private void Awake() {
         _audioSource = GetComponent<AudioSource>();
+        PlayerPrefs.SetFloat(Constants.AUDIO_VOLUME,_volume);
+    }
+
+    public void SetVolume(float volume) {
+        _audioSource.volume = volume;
+        PlayerPrefs.SetFloat(Constants.AUDIO_VOLUME, volume);
     }
 
     private void Start() {
-        _audioSource.volume = _volume;
+        _audioSource.volume = PlayerPrefs.GetFloat(Constants.AUDIO_VOLUME);
         _audioSource.loop = false;
         _audioSource.Play();
         StartCoroutine("PlayAudioLoop");

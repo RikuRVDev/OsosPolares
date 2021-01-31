@@ -541,7 +541,6 @@ GameObject:
   m_Component:
   - component: {fileID: 673637895}
   - component: {fileID: 673637896}
-  - component: {fileID: 673637897}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -615,14 +614,14 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1330572356}
   m_Direction: 0
   m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MaxValue: 0.2
   m_WholeNumbers: 0
-  m_Value: 0.0005
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 673637897}
-        m_MethodName: SetLevel
+      - m_Target: {fileID: 1651628222}
+        m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -632,19 +631,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &673637897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673637894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12f5588fe303944a94f8427cd082fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: c643e8013b3cc9b4a8e3ebcac1e67930, type: 2}
 --- !u!1 &718477569
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +975,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.00040004004, y: 1}
+  m_AnchorMax: {x: 0.0020010006, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1218,8 +1204,8 @@ RectTransform:
   m_Father: {fileID: 1207424763}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.00040004004, y: 0}
-  m_AnchorMax: {x: 0.00040004004, y: 1}
+  m_AnchorMin: {x: 0.0020010006, y: 0}
+  m_AnchorMax: {x: 0.0020010006, y: 1}
   m_AnchoredPosition: {x: -5.3000183, y: 17}
   m_SizeDelta: {x: 98.34512, y: 72.543274}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1520,8 +1506,7 @@ AudioSource:
   m_GameObject: {fileID: 1651628219}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: c643e8013b3cc9b4a8e3ebcac1e67930,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 73b02fc7ec803c6499ac5726ba1922f6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

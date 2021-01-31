@@ -17,4 +17,7 @@
         new Tile(4, 2, Constants.TILE_TYPE_CAMP),
         new Tile(5, 2, Constants.TILE_TYPE_CAMP),
     };
+
+    // Audio volume constant
+    public static string AUDIO_VOLUME = "audioVolume";
 }
