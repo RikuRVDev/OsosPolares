@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Random = UnityEngine.Random;
@@ -24,7 +23,6 @@ public class MapGenerator : MonoBehaviour
     private List<Tile> _obstacleTiles = new List<Tile>();
 
     // Map tiles
-    public GameObject _pathSprite;
     public GameObject _externalSprite;
     public GameObject[] _floorSprites;
     public GameObject _playerSprite;

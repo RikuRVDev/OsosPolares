@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class GameManager : MonoBehaviour
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
     private AudioManager _audioManager;
+    public Player _playerComponent;
 
     private void Awake() {
         mg = GetComponent<MapGenerator>();
@@ -27,6 +27,16 @@ public class GameManager : MonoBehaviour
         _audioManager = cam.GetComponent<AudioManager>();
     }
 
+    private void Update() {
+        if (!timerIsRunning)
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            }
+        }
+    }
+
     private void FixedUpdate() {
         updateTimer();
     }
@@ -37,6 +47,7 @@ public class GameManager : MonoBehaviour
         if(this.npcRemain == 0){
             _audioManager.PlayVictory();
             timerIsRunning = false;
+            _playerComponent.TogglePlayerCanMove();
         }
     }
 
@@ -53,6 +64,7 @@ public class GameManager : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 _audioManager.PlayFail();
+                _playerComponent.TogglePlayerCanMove();
             }
         }
     }

@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
 
     private AudioManager _audioManager;
     private bool _footstepPlaying = false;
+    private bool _playerCanMove = true;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        gameManager._playerComponent = this;
         sr = GetComponent<SpriteRenderer>();
 
         Camera cam = Camera.main;
@@ -27,27 +29,40 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        horizontalPos = Input.GetAxis("Horizontal");
-        verticalPos = Input.GetAxis("Vertical");
+        if (_playerCanMove)
+        {
+            horizontalPos = Input.GetAxis("Horizontal");
+            verticalPos = Input.GetAxis("Vertical");
+        }
     }
 
     private void FixedUpdate() {
-        Vector3 tempVect = new Vector3(horizontalPos, verticalPos, 0);
-        tempVect = tempVect * speed * Time.deltaTime;
-        transform.Translate(tempVect);
-
-        if (horizontalPos > 0) {
-            sr.flipX = true;
-        } else if (horizontalPos < 0) {
-            sr.flipX = false;
-        }
-
-        if (tempVect.magnitude > 0 && !_footstepPlaying)
+        if(_playerCanMove)
         {
-            _audioManager.PlayFootstep();
-            _footstepPlaying = true;
-            StartCoroutine("PlaySound");
+            Vector3 tempVect = new Vector3(horizontalPos,verticalPos,0);
+            tempVect = tempVect * speed * Time.deltaTime;
+            transform.Translate(tempVect);
+
+            if(horizontalPos > 0)
+            {
+                sr.flipX = true;
+            }
+            else if(horizontalPos < 0)
+            {
+                sr.flipX = false;
+            }
+
+            if(tempVect.magnitude > 0 && !_footstepPlaying)
+            {
+                _audioManager.PlayFootstep();
+                _footstepPlaying = true;
+                StartCoroutine("PlaySound");
+            }
         }
+    }
+
+    public void TogglePlayerCanMove() {
+        _playerCanMove = !_playerCanMove;
     }
 
     void OnTriggerEnter2D(Collider2D other)
