@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public int npcRemain;
     public float timeRemaining = 10;
+    private float timeTriggerChange;
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         npcRemain = mg.npcs;
         timerIsRunning = true;
+        timeTriggerChange = (timeRemaining - 1) / 7;
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class GameManager : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
-                canvasManager.DisplayTime(timeRemaining);
+                canvasManager.DisplayTime(timeRemaining, timeTriggerChange);
             }
             else
             {
