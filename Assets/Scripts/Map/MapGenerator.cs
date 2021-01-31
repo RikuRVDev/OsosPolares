@@ -193,6 +193,7 @@ public class MapGenerator : MonoBehaviour
             cam.transform.SetParent(_player.transform);
             Camera2DFollow scriptFollow = cam.GetComponent<Camera2DFollow>();
             scriptFollow.target = _player.transform;
+            scriptFollow.hasTarget = true;
         }
     }
 

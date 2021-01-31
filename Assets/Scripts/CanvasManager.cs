@@ -35,8 +35,9 @@ public class CanvasManager : MonoBehaviour
             Vector3 screenPos = cam.WorldToScreenPoint(obj.transform.position);
             float h = Screen.height;
             float w = Screen.width;
-            float x = screenPos.x - (w - 25)+ (Constants.ICON_SEPARATION * i);
-            float y = screenPos.y - 25;
+            float x = screenPos.x - w + 90 + (Constants.ICON_SEPARATION * i);
+            float y = screenPos.y + 45;
+
             float s = canvas.scaleFactor;
             RectTransform trm = obj.GetComponent<RectTransform>();
             trm.localScale = new Vector3(0.5f,0.5f,0);  

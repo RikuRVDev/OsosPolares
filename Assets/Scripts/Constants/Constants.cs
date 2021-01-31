@@ -8,5 +8,5 @@
     public static string TILE_TYPE_PATH = "PATH";
 
     // UI properties
-    public static int ICON_SEPARATION = 45;
+    public static int ICON_SEPARATION = 40;
 }

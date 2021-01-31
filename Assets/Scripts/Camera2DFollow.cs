@@ -1,30 +1,33 @@
 using System;
 using UnityEngine;
 
-    public class Camera2DFollow : MonoBehaviour
+public class Camera2DFollow : MonoBehaviour
+{
+    public Transform target;
+    public float damping = 1;
+    public float lookAheadFactor = 3;
+    public float lookAheadReturnSpeed = 0.5f;
+    public float lookAheadMoveThreshold = 0.1f;
+
+    private float m_OffsetZ;
+    private Vector3 m_LastTargetPosition;
+    private Vector3 m_CurrentVelocity;
+    private Vector3 m_LookAheadPos;
+    public bool hasTarget = false;
+
+    // Use this for initialization
+    private void Start()
     {
-        public Transform target;
-        public float damping = 1;
-        public float lookAheadFactor = 3;
-        public float lookAheadReturnSpeed = 0.5f;
-        public float lookAheadMoveThreshold = 0.1f;
-
-        private float m_OffsetZ;
-        private Vector3 m_LastTargetPosition;
-        private Vector3 m_CurrentVelocity;
-        private Vector3 m_LookAheadPos;
-
-        // Use this for initialization
-        private void Start()
-        {
-            m_LastTargetPosition = target.position;
-            m_OffsetZ = (transform.position - target.position).z;
-            transform.parent = null;
-        }
+        m_LastTargetPosition = target.position;
+        m_OffsetZ = (transform.position - target.position).z;
+        transform.SetParent(null);
+    }
 
 
-        // Update is called once per frame
-        private void Update()
+    // Update is called once per frame
+    private void Update()
+    {
+        if (hasTarget)
         {
             // only update lookahead pos if accelerating or changed direction
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
@@ -48,4 +51,4 @@ using UnityEngine;
             m_LastTargetPosition = target.position;
         }
     }
-
+}
