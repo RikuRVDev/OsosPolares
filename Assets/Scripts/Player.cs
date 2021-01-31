@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public float speed = 3;
     private SpriteRenderer sr;
     private GameManager gameManager;
+    private CanvasManager canvasManager;
 
     private float horizontalPos = 0.0f;
     private float verticalPos = 0.0f;
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
 
         Camera cam = Camera.main;
         _audioManager = cam.GetComponent<AudioManager>();
+
+        canvasManager = FindObjectOfType<CanvasManager>();
     }
 
     void Update()
@@ -52,6 +55,10 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("npc"))
         {
             _audioManager.PlayCompanion();
+
+            Npcs npc = other.gameObject.GetComponent<Npcs>();
+            canvasManager.renderSprite(npc.color);
+            
             gameManager.reduceNpcsRemain();
             Destroy(other.gameObject, .0f);
         }

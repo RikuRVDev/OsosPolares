@@ -9,13 +9,11 @@ public class GameManager : MonoBehaviour
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
-    public List<Npc> npcsColorList;
     private AudioManager _audioManager;
 
     private void Awake() {
         mg = GetComponent<MapGenerator>();
         canvasManager = FindObjectOfType<CanvasManager>();
-        npcsColorList = mg.npcsList;
     }
 
     // Start is called before the first frame update
