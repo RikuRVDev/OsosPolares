@@ -208,7 +208,7 @@ MonoBehaviour:
   _bigTree:
   - {fileID: 5468433638862500102, guid: 558c804f6081b26438764ac6cbe217ba, type: 3}
   - {fileID: 9216439347545848520, guid: 20040494fa1520848aa4608aef6fad56, type: 3}
-  _bigObstacles: 2
+  _bigObstacles: 10
   _obstacleSprites:
   - {fileID: 4360482338010084626, guid: a59c0be25d27db942984d9e06ca4013f, type: 3}
   - {fileID: 7822575292366002250, guid: 1fa0d6c888e805c4894d632b8f715eb4, type: 3}
@@ -226,7 +226,7 @@ MonoBehaviour:
   - {fileID: 6277926933941834485, guid: 5fa12a0263287d04fa41f2fbeb1f3b54, type: 3}
   - {fileID: 7809383038694995078, guid: f95f2459693c21a4d9370e893fef0b69, type: 3}
   - {fileID: 1824675798791551280, guid: 363471376e967d141a19b239f93c9a52, type: 3}
-  obstacles: 30
+  obstacles: 200
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
