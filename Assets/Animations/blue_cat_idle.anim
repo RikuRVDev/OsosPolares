@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Penguin_idle
+  m_Name: blue_cat_idle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -7249336617800755273, guid: 39a3cbe5fa5936643a3a116b22338465,
+      value: {fileID: 1804650955226622517, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -7055910475476811401, guid: 39a3cbe5fa5936643a3a116b22338465,
+      value: {fileID: 8953594024595948299, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e,
+        type: 3}
+    - time: 0.16666667
+      value: {fileID: -3987774225876013305, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e,
+        type: 3}
+    - time: 0.25
+      value: {fileID: 7275105126738401964, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -44,14 +50,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -7249336617800755273, guid: 39a3cbe5fa5936643a3a116b22338465, type: 3}
-    - {fileID: -7055910475476811401, guid: 39a3cbe5fa5936643a3a116b22338465, type: 3}
+    - {fileID: 1804650955226622517, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e, type: 3}
+    - {fileID: 8953594024595948299, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e, type: 3}
+    - {fileID: -3987774225876013305, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e, type: 3}
+    - {fileID: 7275105126738401964, guid: 7f3be9dab73ca934e9fcc12d5d4dab0e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
