@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcRemain: 3
-  timeRemaining: 30
+  timeRemaining: 60
   _playerComponent: {fileID: 0}
 --- !u!4 &461254337
 Transform:

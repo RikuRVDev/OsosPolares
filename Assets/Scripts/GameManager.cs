@@ -5,7 +5,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public int npcRemain;
-    public float timeRemaining = 0;
+    public float timeRemaining = 20;
     private float timeTriggerChange;
     private MapGenerator mg;
     private CanvasManager canvasManager;
