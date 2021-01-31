@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         mg = GetComponent<MapGenerator>();
         canvasManager = FindObjectOfType<CanvasManager>();
-  
     }
 
     // Start is called before the first frame update

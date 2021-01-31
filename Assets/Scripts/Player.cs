@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public float speed = 3;
     private SpriteRenderer sr;
     private GameManager gameManager;
+    private CanvasManager canvasManager;
 
     private float horizontalPos = 0.0f;
     private float verticalPos = 0.0f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         sr = GetComponent<SpriteRenderer>();
+        canvasManager = FindObjectOfType<CanvasManager>();
     }
 
     void Update()
@@ -37,6 +39,9 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.CompareTag("npc"))
         {
+            Npcs npc = other.gameObject.GetComponent<Npcs>();
+            canvasManager.renderSprite(npc.color);
+            //Debug.Log("Aqui");
             gameManager.reduceNpcsRemain();
             Destroy(other.gameObject, .0f);
         }
