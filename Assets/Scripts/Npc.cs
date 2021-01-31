@@ -8,7 +8,7 @@ public class Npc : MonoBehaviour {
     private int id;
     public string color;
   
-    public Npc(int id) {
+    public void SetId(int id) {
         this.id = id;
         if(id % 4 == 0){
             this.color = "Green";
