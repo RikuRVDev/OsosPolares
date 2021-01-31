@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +11,17 @@ public class Player : MonoBehaviour
     private float horizontalPos = 0.0f;
     private float verticalPos = 0.0f;
 
+    private AudioManager _audioManager;
+    private bool _footstepPlaying = false;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         sr = GetComponent<SpriteRenderer>();
+
+        Camera cam = Camera.main;
+        _audioManager = cam.GetComponent<AudioManager>();
+
         canvasManager = FindObjectOfType<CanvasManager>();
     }
 
@@ -33,17 +41,31 @@ public class Player : MonoBehaviour
         } else if (horizontalPos < 0) {
             sr.flipX = false;
         }
+
+        if (tempVect.magnitude > 0 && !_footstepPlaying)
+        {
+            _audioManager.PlayFootstep();
+            _footstepPlaying = true;
+            StartCoroutine("PlaySound");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("npc"))
         {
+            _audioManager.PlayCompanion();
+
             Npcs npc = other.gameObject.GetComponent<Npcs>();
             canvasManager.renderSprite(npc.color);
-            //Debug.Log("Aqui");
+            
             gameManager.reduceNpcsRemain();
             Destroy(other.gameObject, .0f);
         }
+    }
+
+    private IEnumerator PlaySound() {
+        yield return new WaitForSeconds(0.5f);
+        _footstepPlaying = false;
     }
 }    

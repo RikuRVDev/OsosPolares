@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private MapGenerator mg;
     private CanvasManager canvasManager;
     private bool timerIsRunning = false;
+    private AudioManager _audioManager;
 
     private void Awake() {
         mg = GetComponent<MapGenerator>();
@@ -20,23 +21,24 @@ public class GameManager : MonoBehaviour
     {
         npcRemain = mg.npcs;
         timerIsRunning = true;
+
+        Camera cam = Camera.main;
+        _audioManager = cam.GetComponent<AudioManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate() {
         updateTimer();
     }
+
     public void reduceNpcsRemain(){
         
         this.npcRemain --;
         if(this.npcRemain == 0){
-            Debug.Log("Digimones");
+            _audioManager.PlayVictory();
+            timerIsRunning = false;
         }
     }
+
     void updateTimer() {
         if (timerIsRunning)
         {
@@ -47,9 +49,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 timeRemaining = 0;
                 timerIsRunning = false;
+                _audioManager.PlayFail();
             }
         }
     }
