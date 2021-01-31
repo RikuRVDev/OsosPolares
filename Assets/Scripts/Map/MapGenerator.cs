@@ -40,8 +40,8 @@ public class MapGenerator : MonoBehaviour
     public GameObject[] _obstacleSprites;
     public int obstacles = 30;
 
-    //Npc Array
-    public List<Npc> npcsList = new List<Npc>();
+    // Npcs Prefabs
+    public List<GameObject> npcsArray;
 
     void Start() {
         BuildBigObstacles();
@@ -86,19 +86,6 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    /**
-     * Generate npcs depending on npc count
-     * Get available positions from Map Tiles
-     **/
-    private void GenerateNpcs() {
-        for(int i = 0;i < npcs;i++)
-        {
-            Tile npcPosition = GetRandomTile();
-            _npcTiles.Add(new Tile(npcPosition.x,npcPosition.y,Constants.TILE_TYPE_NPC));
-            npcsList.Add(new Npc(i+1));
-            Instantiate(_npcSprite,new Vector3(npcPosition.x,npcPosition.y,0.0f),Quaternion.identity);
-        }
-    }
 
     /**
      * Build all big obstacles to generate a list of sprite arrays
@@ -165,6 +152,22 @@ public class MapGenerator : MonoBehaviour
             cam.transform.SetParent(_player.transform);
             Camera2DFollow scriptFollow = cam.GetComponent<Camera2DFollow>();
             scriptFollow.target = _player.transform;
+        }
+    }
+
+    
+    /**
+     * Generate npcs depending on npc count
+     * Get available positions from Map Tiles
+     **/
+    private void GenerateNpcs() {
+        for(int i = 0;i < npcs;i++)
+        {
+            Tile npcPosition = GetRandomTile();
+            _npcTiles.Add(new Tile(npcPosition.x,npcPosition.y,Constants.TILE_TYPE_NPC));
+            Instantiate(npcsArray[Random.Range(0,npcs)],new Vector3(npcPosition.x,npcPosition.y,0.0f),Quaternion.identity);
+            
+
         }
     }
 
